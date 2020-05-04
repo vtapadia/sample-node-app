@@ -6,6 +6,8 @@ var server = {
   port: 3000
 };
 
+console.log(process.env.APP_ENV);
+
 //Service
 function get(url) {
   return new Promise(function(resolve, reject) {
