@@ -1,21 +1,12 @@
-// var msg = 'Hello World';
-// console.log(msg);
-
 var express = require('express');
+const http = require('http');
+
 //Configuration
 var server = {
   port: 3000
 };
 
-//API's
-var app = express();
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-  }
-);
-
-const http = require('http');
-
+//Service
 function get(url) {
   return new Promise(function(resolve, reject) {
     http.get(url, (res) => {
@@ -34,6 +25,13 @@ function get(url) {
     });
   });
 }
+
+//API's
+var app = express();
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+  }
+);
 
 app.get('/api/name', function (req, res) {
   var fName = get('http://localhost:3000/api/name/first');
