@@ -2,13 +2,27 @@
   "name": "sample-node-app",
   "version": "1.0.0",
   "description": "Sample Node App",
-  "main": "app.js",
+  "main": "dist/server.js",
   "scripts": {
+    "start": "npm run serve",
+    "reinstall": "rimraf node_modules && npm cache clean && npm install",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build-ts",
+    "serve": "node -r dotenv/config dist/server.js",
+    "build-ts": "tsc",
+    "copy-files": "copyfiles .env* dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Varesh Tapadia",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.6",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "copyfiles": "^2.2.0",
+    "rimraf": "^3.0.2"
   }
 }
