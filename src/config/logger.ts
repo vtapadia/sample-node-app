@@ -1,9 +1,9 @@
 import * as winston  from "winston";
 
-const {combine, json, logstash, timestamp, splat} = winston.format;
+const {combine, json, logstash, timestamp, splat, errors, colorize} = winston.format;
 
 const options: winston.LoggerOptions = {
-  format: combine(splat(), json()),
+  format: combine(timestamp(), errors({stack: true}), logstash()),
   defaultMeta: { service: 'sample-node-app', environment: process.env.NODE_ENV },
   transports: [
       new winston.transports.Console({
