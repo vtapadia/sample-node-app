@@ -1,6 +1,7 @@
 import * as express from "express";
 
 import config from "./config/config";
+import logger from "./config/logger";
 
 // Controllers (route handlers)
 import * as helloController from "./web/helloWorld";
@@ -16,5 +17,7 @@ app.get("/api/hello", helloController.getApi);
 app.get("/api/firstName", nameController.firstName);
 app.get("/api/lastName", nameController.lastName);
 app.get("/api/name", nameController.name);
+
+logger.info("Service is started");
 
 export default app;
