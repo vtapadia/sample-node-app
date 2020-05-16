@@ -1,4 +1,5 @@
 import app from "./app";
+import {createTerminus, TerminusOptions, HealthCheckError} from "@godaddy/terminus";
 
 /**
  * Start Express server.
@@ -11,5 +12,15 @@ const server = app.listen(app.get("port"), () => {
   );
   console.log("  Press CTRL-C to stop\n");
 });
+
+const healthCheck = async () => {return Promise.resolve()};
+
+const terminalOpts: TerminusOptions = {
+  healthChecks: {
+    '/healthcheck': healthCheck,
+    verbatim: true
+  }
+};
+createTerminus(server, terminalOpts);
 
 export default server;
