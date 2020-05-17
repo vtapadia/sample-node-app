@@ -17,3 +17,6 @@ After a bit of research, it seems the winston library is very popular and highly
 It is pretty simple and very easy to work with.
 https://github.com/winstonjs/winston
 
+### @godaddy/terminus
+This library, referred from the express documentation helps in setting up the healthcheck setup for a service. This ensures that the application is shutdown gracefully.
+
