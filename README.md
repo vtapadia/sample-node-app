@@ -20,3 +20,5 @@ https://github.com/winstonjs/winston
 ### @godaddy/terminus
 This library, referred from the express documentation helps in setting up the healthcheck setup for a service. This ensures that the application is shutdown gracefully.
 
+### GOT
+Was searching for a hhtp client library to make api calls. Request is the most popular library for that, however it has been deprecated since Feb 2020. So I searched up and saw that GOT is quite popular. The library is not bad, I guess its just that I needed to learn about promise and async/await to implement what I was trying to do. Also, I wanted to work with JSON responses to parse and store the same so that took some time to figure out. Finally though, once it works, it is easy.

@@ -1,6 +1,7 @@
 import { Response, Request} from "express";
 import logger from "../config/logger";
-import {Message} from "../models/resources"
+import {Message} from "../models/resources";
+import myService from "../lib/myService";
 
 export const firstName = (req: Request, res: Response) => {
   logger.debug("FirstName API called");
@@ -8,11 +9,16 @@ export const firstName = (req: Request, res: Response) => {
 }
 
 export const lastName = (req: Request, res: Response) => {
+  logger.debug("LastName API called");
   res.json(new Message("Tapadia"));
 }
 
 export const name = (req: Request, res: Response) => {
-  //TODO call first and last and then submit the result
   logger.debug("Full Name API called");
-  res.json(new Message("Varesh Tapadia"));
+  myService.makeApiCalls().then((value) => {
+    res.json(new Message(value));
+  }).catch((error) => {
+    logger.warn("Some error occured", error);
+    res.sendStatus(500);
+  });
 }
