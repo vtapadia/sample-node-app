@@ -1,5 +1,5 @@
 import {createTerminus, TerminusOptions, HealthCheckError} from "@godaddy/terminus";
-import logger from "./logger"
+import {logger} from "./logger"
 
 const healthCheck = async () => Promise.resolve();
 

@@ -1,16 +1,19 @@
 import * as express from "express";
 
 import config from "./config/config";
-import logger from "./config/logger";
+import {logger, tracer} from "./config/logger";
 
 // Controllers (route handlers)
 import * as helloController from "./web/helloWorld";
 import * as nameController from "./web/name";
+import {expressMiddleware} from "zipkin-instrumentation-express";
 
 // Create Express server
 const app = express();
 
+
 app.set("port", config.PORT);
+app.use(expressMiddleware({tracer}));
 
 //Defining API's
 app.get("/api/hello", helloController.getApi);

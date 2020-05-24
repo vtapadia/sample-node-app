@@ -1,7 +1,8 @@
 import config from "../config/config";
 import got from "got";
+import wrapGot from "zipkin-instrumentation-gotjs";
 import { Message, iMessage } from "../models/resources";
-import logger from "../config/logger";
+import {logger, tracer} from "../config/logger";
 
 // simpleService.set("base_url", process.env.SERVICE_URL || "http://localhost");
 // simpleService["base_url"] = process.env.SERVICE_URL || "http://localhost";
@@ -11,6 +12,9 @@ console.log(process.env.SERVICE_URL || "http://localhost");
 const gotAPI = got.extend({
 	prefixUrl: config.myService.url
 });
+// const gotAPI = wrapGot(got.extend({
+// 	prefixUrl: config.myService.url
+// }), {tracer, serviceName:config.serviceName , remoteServiceName:"my-service"});
 
 const fetch = async (url: string):Promise<iMessage> => {
   //Gets the response and converts the body to a json object.

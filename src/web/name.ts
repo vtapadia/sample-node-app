@@ -1,5 +1,5 @@
 import { Response, Request} from "express";
-import logger from "../config/logger";
+import {logger} from "../config/logger";
 import {Message} from "../models/resources";
 import myService from "../lib/myService";
 
